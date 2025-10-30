@@ -1,32 +1,66 @@
-\chapter{Bayesian change point detection}
-\label{appendix:appendix_1} 
+\chapter{Hardware Specifications and Schematics}
+\label{appendix:hardware}
 
 
-To estimate the location of a step change, a Bayesian change point detection algorithm based on \cite{Ruanaidh1996} and \cite{adams2007bayesian} is used in the thesis. Given a data sequence $x$ of $N$ samples with Gaussian noise added:
+% TODO: Include detailed hardware documentation
 
-\begin{equation}
-    \centering
-      x_i=\begin{cases}
-          \mu_1 + \epsilon_i, & \text{if $i<m$}.\\
-          \mu_2 + \epsilon_i, & \text{otherwise}.
-          \end{cases}
-    \label{eq:app:cp:5.1}
-\end{equation}
 
-where the noise samples $\epsilon_i$ are assumed to be independent and $m$ is the step change location. The likelihood of the data is given by the joint probability of the noise samples $\epsilon_i$: 
+\section{Circuit Diagrams}
 
-\begin{equation}
-    \centering
-    P(x|\{\mu_1\mu_2\sigma m\}) = \prod\limits_{i=1}^N P(\epsilon_i)
-    \label{eq:app:cp:5.2}
-\end{equation}
+% TODO: Include complete circuit schematics
+% - Main control circuit
+% - Power supply circuit
+% - Screen interface circuit
+% - Communication interface circuit
 
-where $\sigma$ is the standard deviation of the Gaussian noise;  $\mu_1, \mu_2$ and $\sigma m$ are the known time series parameters. The probability density function for the noise samples is defined by:
 
-\begin{equation}
-    \centering
-    P(\epsilon) = \frac{1}{\sigma \sqrt{2 \pi} }  e ^{ - \frac{ (\epsilon - \mu)^2 } {2\sigma^2} }
-    \label{eq:app:cp:noise_pdf}
-\end{equation}
+% Example figure for circuit diagram:
+% \begin{figure}[htb]
+%   \centering
+%   \includegraphics[width=0.9\linewidth,keepaspectratio=true]{circuit_diagram}
+%   \caption[Main circuit schematic]
+%   {
+%       Main circuit schematic showing connections between components.
+%       \label{fig:circuit_diagram}
+%   }
+% \end{figure}
 
-\lipsum[12-17]
+
+\section{Bill of Materials (BOM)}
+
+% TODO: List all components used
+
+% Example BOM table:
+% \begin{table}[htb]
+%   \centering
+%   \caption{Bill of materials}
+%   {\small
+%     \begin{tabular}{llll}
+%       \toprule
+%       Component & Part Number & Quantity & Cost \\
+%       \midrule
+%       Screen        & TBD & 1 & £TBD \\
+%       Microcontroller & TBD & 1 & £TBD \\
+%       Battery       & TBD & 1 & £TBD \\
+%       % Add more components...
+%       \bottomrule
+%     \end{tabular}
+%   }
+%   \label{table:bom}
+% \end{table}
+
+
+\section{PCB Layout}
+
+% TODO: Include PCB design files/images
+% - PCB layout (top and bottom layers)
+% - Component placement
+% - Dimensions
+
+
+\section{Component Datasheets}
+
+% TODO: Include key component datasheets or references
+% - Screen datasheet
+% - Microcontroller specifications
+% - Communication module specs
