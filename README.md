@@ -165,7 +165,6 @@ The compile script runs LaTeX multiple times to resolve:
 - Table of contents
 - Glossary entries
 
-This is normal for LaTeX documents!
 
 ### Compilation Errors?
 
