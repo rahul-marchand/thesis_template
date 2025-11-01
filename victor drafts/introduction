@@ -1,0 +1,36 @@
+-- motivation -- 
+
+# stats about mTBI in grassroots sports in particular
+
+mTBI are highly prevalent in grassroots and youth sports, yet research indicates that between 50% and 80% of mTBIs go unreported or undiagnosed at the time of injury. {McCrory et al., Br J Sports Med 2017; 51:838–847} In the UK alone, it is estimated that over 1 million mild traumatic brain injuries occur each year, with the vast majority in amateur settings where medical resources are limited.{NICE, Head injury clinical guideline [CG176], 2019} 
+
+
+
+-- problem statement -- 
+
+# exactly what problem are we trying to solve -- a few lines 
+
+Not treating an mTBI can result in prolonged symptoms, repeated injuries, and even long-term neurological deficits. Early and accurate identification is critical to reduce the risk of complications such as persistent post-concussion syndrome and cumulative cognitive impairment. Currently, most mTBI screening assessments in grassroots sports are conducted pitchside—sometimes by medical professionals using tools like SCAT6, but more often by untrained individuals with simpler assessments such as CRT6. These tools, especially CRT6, can be inadequate and are susceptible to human error. For example, studies have demonstrated that even trained clinicians cannot reliably perform the Pupillary Light Reflex (PLR) assessment, a commonly used element in mTBI screening using pupillometry \cite{SomePLRStudy}. The aim of this project is to minimise the number of mTBIs that go untreated by developing an accessible, automated screening tool, thereby enabling timely recognition even in resource-limited, grassroots sports environments. ## maybe cut this last clause and/or move "The aim of this project..." into the next section ##.
+
+
+-- project objectives -- 
+
+# here we'll first restate the aim of this project but in slighter higher detail 
+The objective of this project is to develop an automated, smartphone-based pupillometry tool for mTBI screening that can be reliably deployed outside of clinical environments. Specifically, the tool is designed to identify subtle oculomotor and pupillary responses that are often missed by conventional sideline screening protocols, such as CRT6 and even SCAT6. By detecting physiological signs of mTBI that would otherwise go unnoticed, the tool has the potential to significantly reduce the number of untreated cases and help prevent long-term complications associated with missed or delayed diagnosis.
+
+
+# here we'll detail some broad requirements for the tool -- accessibility and the like.
+
+The broad objectives of the tool are:
+- The tool should be accessible and easy to use in grassroots sports settings, even by non-experts.
+- It should prioritise correctly detecting true cases of mTBI, even if that means accepting some false positives.
+- The assessment should be relatively quick.
+- Hardware and software should be affordable so the tool is widely adoptable.
+- The tool should provide objective, automated assessments to reduce errors from subjective judgement.
+
+
+
+
+
+
+
