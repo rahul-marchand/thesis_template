@@ -2,39 +2,55 @@
 \label{chapter:introduction}
 
 
-% TODO: Add introduction content
-% Suggested sections:
-% - Motivation and context for mTBI screening
-% - Problem statement
-% - Project objectives
-% - Contributions
-% - Report structure
+\section{Clinical Need}
+
+Mild traumatic brain injury (\ab{mtbi}), commonly known as concussion, represents a global public health crisis of staggering magnitude. An estimated 55.9 million people sustain \ab{mtbi} annually worldwide~\cite{dewan2019estimating}. The World Health Organization systematic review indicates that 70-90\% of all traumatic brain injuries are classified as mild, making \ab{mtbi} the dominant category of brain injury~\cite{cassidy2004incidence}. In the United States alone, traumatic brain injury resulted in 2.87 million emergency department visits, hospitalizations, and deaths in 2014, though this figure likely substantially underestimates true burden as many cases never seek medical attention~\cite{peterson2019surveillance}.
+
+The problem is particularly acute in grassroots and youth sports, where the vast majority of head injuries occur in settings without medical supervision. Parents, teachers, coaches, and referees serve as first responders to potential head injuries, yet lack access to objective screening tools. These untrained observers must rely on visible signs and athlete self-reporting to make critical decisions about whether medical evaluation is warranted. Research demonstrates the inadequacy of this approach: approximately 50\% of concussions in high school and youth sports are never reported at the time of injury, with athletes failing to recognise the injury as serious or being unwilling to remove themselves from competition~\cite{mccrea2004unreported, registermihalik2013knowledge}. Athletes minimise symptoms to continue playing, and untrained observers cannot detect subtle neurological dysfunction without quantitative measurement tools.
+
+The clinical consequences of missed or delayed diagnosis are severe. Second impact syndrome, occurring when a second head injury is sustained before complete recovery from the initial concussion, results in catastrophic cerebral edema and brain herniation, often proving fatal~\cite{sis_statpearls}. Even without repeated injury, persistent post-concussive syndrome affects 15-25\% of adults following \ab{mtbi}, with up to 50\% of patients experiencing symptoms at three months post-injury. Notably, 27\% are unable to return to their previous level of work at 12 months~\cite{ppcs_statpearls}. Early identification is therefore critical to enable appropriate management, prevent premature return to activities that risk repeated injury, and reduce the likelihood of long-term sequelae.
+
+There exists an urgent unmet need for an accessible, objective screening tool deployable at the point of injury by non-medical personnel in grassroots sports settings.
 
 
-\section{Motivation}
+\section{Limitations of Existing Approaches}
 
-% TODO: Discuss the clinical need for rapid, objective mTBI assessment
+Current approaches to \ab{mtbi} assessment fall into two categories, neither of which addresses the identified need for point-of-injury screening in non-medical settings.
 
+\textbf{The accessibility gap.} Clinical sideline assessment tools include the \ab{scat6}, intended for use by healthcare professionals, and the Concussion Recognition Tool 6 (CRT6), designed for use by non-medical personnel~\cite{echemendia2023scat6, echemendia2023crt6}. \ab{scat6} provides comprehensive evaluation combining symptom inventories, cognitive screening, neurological examination, and balance testing, but requires medical training for proper administration and interpretation, training that parents, teachers, and coaches in grassroots settings do not possess. CRT6, though designed for laypersons, provides only basic observational screening without quantitative metrics, requiring the observer to make subjective judgments about concerning signs. The most recent American Congress of Rehabilitation Medicine diagnostic criteria for \ab{mtbi} explicitly acknowledge that diagnosis remains clinical, with no validated stand-alone objective diagnostic test available even to trained clinicians~\cite{silverberg2023acrm}. Commercial quantitative pupillometry devices provide objective measurement but cost thousands of pounds and are designed for medical facilities rather than field deployment. The fundamental problem is not inadequacy of medical assessment, but rather the absence of tools deployable by non-medical personnel in the grassroots settings where the vast majority of head injuries occur.
 
-\section{Problem Statement}
+\textbf{The patient cooperation problem.} All assessment approaches that depend on patient self-reporting, whether administered by clinicians or laypersons, are vulnerable to symptom minimisation by athletes motivated to return to play~\cite{mccrea2004unreported, meier2015underreporting}. Athletes systematically underreport symptoms when assessed by team personnel compared to confidential research settings, with cleared athletes continuing to minimise symptoms even days post-concussion~\cite{meier2015underreporting}. This behaviour renders symptom-based assessment fundamentally unreliable regardless of who administers the evaluation. Even trained medical professionals face this challenge: athletes conceal or downplay symptoms to avoid removal from play, making subjective reporting an inadequate foundation for screening decisions.
 
-% TODO: Describe limitations of current concussion assessment methods
+\textbf{The need for objective automation.} Manual clinical examination of neurological signs introduces additional variability, even when performed by trained medical personnel. Studies demonstrate that only 33.3\% of pupils assessed as non-reactive by practitioners were classified similarly by automated pupillometry, with inter-rater reliability between clinicians achieving only moderate agreement~\cite{olson2016interrater}. This variability reflects the inherent limitations of subjective visual assessment of subtle physiological responses. Automated quantitative measurement addresses both the training barrier and the subjectivity problem: involuntary physiological responses such as pupillary light reflex cannot be consciously suppressed by motivated athletes, and automated tracking eliminates inter-observer variability.
+
+\textbf{Laboratory-based approaches unsuitable for field deployment.} Alternative approaches utilising objective biomarkers face different but equally disqualifying limitations for point-of-injury screening in grassroots settings. Blood biomarkers, despite demonstrating high sensitivity, require venipuncture by trained personnel, sample transport to laboratory facilities, and processing time of hours to days, rendering them completely unsuitable for immediate field-based screening by parents, teachers, or coaches. Similarly, neuroimaging modalities remain insensitive to the diffuse axonal injury that characterises \ab{mtbi} and require access to hospital facilities, precluding deployment at the point of injury (detailed discussion in \Cref{chapter:background}).
+
+The gap is clear: tools offering objective quantitative measurement require medical facilities, trained personnel, and substantial cost, while tools potentially deployable in field settings lack quantitative metrics and depend on subjective evaluation or patient cooperation. No accessible, objective, quantitative screening tool exists for use by untrained personnel at the point of injury in grassroots sports settings.
 
 
 \section{Project Objectives}
 
-% TODO: List the specific objectives of this project
-% - Design and develop a smartphone-based pupillometry device
-% - Implement pupillary biomarker measurements (PLR, convergence, smooth pursuit, microsaccades)
-% - Create electronics integration for screen and phone communication
-% - Validate the system
+This project addresses the identified gap by developing an automated, smartphone-based multi-parameter oculomotor assessment system for \ab{mtbi} screening deployable in non-clinical settings. The fundamental objective is to provide parents, teachers, coaches, and other first responders with an objective, quantitative screening tool requiring no medical training that can identify individuals requiring further medical evaluation following head injury.
 
+The approach is motivated by compelling evidence that oculomotor dysfunction represents a hallmark feature of \ab{mtbi}. Studies consistently demonstrate that the majority of individuals with \ab{mtbi} exhibit abnormalities in eye movements and pupillary responses~\cite{mcdonald2022eye}. This high prevalence reflects the vulnerability of distributed oculomotor control networks, spanning cortex, brainstem, and cerebellum, to the diffuse axonal injury that characterises \ab{mtbi} (detailed pathophysiology and prevalence data presented in \Cref{chapter:background}).
 
-\section{Contributions}
+The system implements three complementary oculomotor assessments: \ab{plr}, smooth pursuit eye movements, and vergence (\ab{npc}). Each biomarker provides independent diagnostic information, and multi-parameter assessment combining these biomarkers achieves superior diagnostic performance compared to any single measure. Recent smartphone-based pupillometry research has demonstrated the technical feasibility of this approach, with published systems achieving diagnostic accuracy substantially exceeding conventional clinical tools~\cite{maxin2024smartphone}.
 
-% TODO: Summarize the key contributions of this work
+The system is designed to meet the following requirements addressing the limitations of existing approaches:
+
+\begin{itemize}
+    \item \textbf{Accessible deployment:} Smartphone-based implementation utilising consumer device cameras eliminates the cost barrier of specialised medical equipment and enables deployment in any setting where smartphones are available.
+
+    \item \textbf{Usability by non-experts:} Automated stimulus delivery and analysis eliminate the need for medical training or subjective interpretation.
+
+    \item \textbf{Objective measurement:} Quantitative tracking of involuntary physiological responses provides assessment independent of patient self-reporting or effort, addressing the symptom minimisation that contributes to underreporting.
+
+    \item \textbf{High sensitivity:} The design prioritises detection of true \ab{mtbi} cases, accepting higher false positive rates as preferable to missed diagnoses in a screening context where positive results prompt medical referral rather than definitive diagnosis.
+
+    \item \textbf{Rapid assessment:} Total battery completion time targets under 5-10 minutes, enabling practical deployment during sports events or in school settings.
+\end{itemize}
 
 
 \section{Report Structure}
 
-\Cref{chapter:background} provides background on mTBI and existing assessment technologies. \Cref{chapter:design} presents the system design and architecture. \Cref{chapter:implementation} details the implementation of the device and software. \Cref{chapter:testing} describes the testing methodology and results. Finally, \Cref{chapter:conclusion} concludes the report and discusses future work.
+The remainder of this report is organised as follows: \Cref{chapter:background} establishes the scientific foundation for oculomotor biomarkers in \ab{mtbi} and reviews existing diagnostic approaches. \Cref{chapter:commercialisation} examines the commercial viability, market opportunity, regulatory pathway, and go-to-market strategy for translating the technology into clinical practice. \Cref{chapter:design} presents the system architecture and design rationale. \Cref{chapter:implementation} details hardware and software implementation. \Cref{chapter:testing} describes validation methodology and results. \Cref{chapter:conclusion} summarises achievements and discusses future work.
