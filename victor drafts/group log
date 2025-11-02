@@ -1,0 +1,112 @@
+Tuesday 14/10
+- Aim 
+    -  Finalise our project idea, foresee issues, understand complexity.
+- What happened
+    - We thought that the idea might be lacking complexity, particularly in terms of ML.
+    - Brainstormed other ideas as well as ways to improve this product that required more complexity.
+    - Ended up sticking with the concussion diagnosis VR headset. 
+    - Explored infrared cameras to be able to record in much higher FPS so that we could effectively capture micro-saccades. Determined that this was too costly and not beneficial enough to our estimated overall detection accuracy to justify, so we are sticking with visible light.
+    - Toyed with the idea of a VR-style headset but without the lenses. Determined in the end that we would certainly need lenses (because of the diverging light rays preventing the eyes from focusing when the phone is so close).
+    - Considered whether we would need additional cameras or whether the iphone front camera is sufficient. With lenses, we either look back through the lenses with the iphone front camera or some other built in cameras, or we have small, inconspicuous cameras that are on the eye-side of the lenses. 
+    - Seems that looking backwards through the lens would be okay but perhaps it would cause too much distortion and variability that would make the model very inaccurate. 
+- What's next
+    - Investigate filming backwards through the lenses.
+    – If feasible, consider an iphone front camera for maximum simplicity and accessibility with minimum cost. If not, investigate camera position on the eye-side of the lenses.
+
+Thursday 16/10
+- Aim 
+    - Begin preliminary investigation of filming backwards through lenses.
+    - Consider how our software will handle this.
+- What happened
+    - Investigated the function of lenses in VR headset. Analysed the relevant optics in the context of our use-case. 
+    - Purchased a google cardboard headset to examine and test next week.
+    - Considered that if filming backwards through the lenses caused any distortion or involved strange angles, then it would likely be better to train a ML model ourselves rather than using an out-of-the-box eye-tracking model.
+- What's next
+    - Actually test filming backwards through lenses (next week when google cardboard headset arrives).
+    - Begin to investigate what biomarkers are targeted in current mTBI pupillometry.
+    - Investigate how we could successfully acquire sufficient data to train our own bespoke model (next week).
+
+Saturday 18/10
+- Aim 
+    - Determine current evidence-based biomarkers for mTBI pupillometry.
+- What happened
+    - Determined that our potential ocular biomarkers are smooth tracking dysfunction, convergence deficiency, microsaccadic fixational eye movements, pupillary light reflex dysfunction, vestibulo-ocular reflex dysfunction.
+    - Further investigated lense dynamics via google cardboard headset.
+- What's next
+    - Gather more evidence-based information on the potential biomarkers. Collate useful studies in our google drive with a short description each (Thursday).
+    - Test filming backwards through lenses + additional google cardboard headset investigation (Tuesday).
+
+Tuesday 21/10
+- Aim 
+    - Actually investigate the google cardboard headset -- test filming backwards through lenses, and assess possible camera locations, screen size, headset ergonomics, and overall practicality for our purposes.
+- What happened
+    - Tested filming backwards through lenses. Compared the quality of the footage to online eye tracking datasets and were pleasantly surprised -- the pupil was often clearly visible. 
+    - However, the image was very sensitive to movement of the headset relative to the eyes, so questions arose about the feasibility of training a reliable model through lenses.
+    - Assessed various possible camera locations:
+        - Small eye-side cameras are inconspicuous but would require a more complex setup and would be significantly more expensive.
+        - Built-in iphone front camera is simple but has a low resolution and is not very sensitive to light.
+        - Using the iphone back camera is potentially viable but would require us to add a separate screen to the headset, and for the phone to be inserted into the headset backwards -- this is something to consider in the future.
+    - Briefly considered headset ergonomics:
+        - Priority: ensure the headset does not move on the user's head and can sit in a consistent position on a wide range of head sizes and shapes.
+        - Noted that these ergonomic considerations are not critical at this time, given other time-sensitive priorities (like getting the BOM together next week).
+- What's next
+    - Begin to investigate the feasibility of using the iphone front camera.
+    - Gather more evidence-based information on the potential biomarkers. Collate useful studies in our google drive with a short description each.
+
+
+Thursday 23/10
+- Aim
+    - Collate evidence-based information on the potential biomarkers, noting the tools used in each study and the feasibility of integrating them into our project.
+    - Investigate how we could successfully acquire sufficient data to train our own bespoke model.
+- What happened
+    - Narrowed down all of the evidence-based potential biomarkers to four that have been shown to be reliable screening methods: smooth tracking dysfunction, convergence deficiency, microsaccadic fixational eye movements, and pupillary light reflex dysfunction.
+    - We each selected one of the four biomarkers to investigate in more detail on Saturday.
+- What's next
+    - Begin to investigate the feasibility of using the iphone front camera.
+    - Each person will do a deep dive on their assigned biomarker to assess its viability and identify what components are needed for it, so we can start drafting the BOM.
+
+Saturday 25/10
+- Aim 
+    - Biomarker deep dive and BOM drafting.
+- What happened
+    - Each person did a deep dive on their assigned biomarker to assess its viability and identify what components are needed for it.
+    - Microsaccadic fixational eye movements was found to require a framerate of at least 120 FPS, but preferably 240 FPS (or even higher), which would rule out using the iphone front camera.
+    - For pupillary light reflex dysfunction, we determined that we may need a light source brighter than the iphone screen, bringing up the possibility of using the iphone back camera and torch, while a separate screen would display the video feed.
+    - We confirmed that convergence deficiency testing requires lenses, so removing the lenses would also eliminate the ability to test for convergence.
+    - Smooth tracking dysfunction was found to be possible at even 60 FPS, although increasing framerate as well as resolution would, of course, be beneficial.
+    - Determined that using the back camera of the iphone combined with a separate screen to display the video feed would be the best solution for balancing the four biomarkers' requirements.
+- What's next
+    - Begin writing our first report draft, focusing on clear messaging and structure.
+    - Finalise BOM.
+
+Tuesday 28/10
+- Aim
+    - Finalise BOM.
+- What happened
+    - Discussed screen size requirements. For optimal display and to ensure each eye has an adequate view field, we determined that a minimum screen size of 5 inches is necessary. This allows for a separate, sufficiently large visible area in front of each eye, which is essential for our intended headset setup.
+    - Note: considered two individual screens, one for each eye, but this required unfeasible cabling and was significantly more expensive. Furthermore, it was not even that beneficial because the angle from the middle of the single screen, which is where the camera would be if we used a double screen, to the lenses is too great relative to the eye-lense line.
+    - Almost finalised BOM, but upon further google cardboard testing, we think that filming backwards through the lenses is likely to interfere too much with the virtual image they create, and so we are considering omitting lenses (and thus also convergence testing).
+- What's next
+    - Actually finalise BOM.
+    - Finalise report draft.
+
+Thursday 30/10
+- Aim
+    - Finalise BOM.
+    - finish report draft for 03/11 submission.
+- What happened
+    - Decided to not include lenses in the BOM. Our product will primarily focus on smooth tracking dysfunction and pupillary light reflex dysfunction, and we will position the screen far enough from the eyes that they are able to focus.
+    - Researched screen options for BOM -- considered integrated controllers, cabling, screen size/resolution vs cost, power requirements, etc.
+- What's next
+    - Prepare presentation for 03/11.
+
+Saturday 01/11   
+- Aim
+    - Prepare presentation for Monday.
+- What happened
+    - Prepared presentation slides with key statistics and figures supporting our project rationale.
+    - Reviewed the methodology of each primary source study to ensure we accurately understand the evidence base for our statistics. 
+- What's next
+    - Present presentation on 03/11.
+
+
