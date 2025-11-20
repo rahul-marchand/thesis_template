@@ -1,0 +1,200 @@
+\section{Individual Development Log - Rahul Marchand}
+
+This log documents my individual contributions to the mTBI screening tool development project, tracking my investigations, technical work, and key decisions from October through early November 2024.
+
+\subsection{Week 1: Project Scoping and Initial Investigation}
+
+\subsubsection*{Tuesday 14 October 2024}
+
+\paragraph{Aim}
+Participate in team brainstorming to finalise project idea and assess technical complexity.
+
+\paragraph{What Happened}
+Participated in team discussions about project complexity, particularly focusing on the machine learning aspects. Contributed to the evaluation of infrared versus visible light cameras for capturing micro-saccades, considering the cost-benefit trade-off for detection accuracy.
+
+Helped assess camera placement options and their implications for model training, particularly noting that filming backwards through lenses might introduce distortion and variability that could impact model accuracy.
+
+\paragraph{What's Next}
+Begin investigating machine learning approaches for eye-tracking and gaze estimation.
+
+\subsubsection*{Thursday 16 October 2024}
+
+\paragraph{Aim}
+Consider software implications of filming through lenses and assess whether custom ML model training would be necessary.
+
+\paragraph{What Happened}
+Analysed the optical challenges of filming backwards through VR lenses and their implications for software development. Determined that lens distortion and unusual viewing angles would likely necessitate training a custom ML model rather than relying on off-the-shelf eye-tracking solutions.
+
+\paragraph{What's Next}
+\begin{itemize}
+    \item Investigate machine learning architectures suitable for gaze estimation
+    \item Research available datasets for training custom eye-tracking models
+    \item Assess feasibility of achieving sufficient accuracy for clinical use
+\end{itemize}
+
+\subsubsection*{Friday 17 October 2024}
+
+\paragraph{Aim}
+Investigate machine learning architectures suitable for eye-tracking and gaze estimation to assess feasibility of training our own model.
+
+\paragraph{What Happened}
+Conducted initial proof-of-concept investigation into gaze estimation using the MobileNet architecture. MobileNet was selected for its efficiency and suitability for mobile deployment. It uses depthwise separable convolutions to reduce computational complexity whilst maintaining good accuracy, making it ideal for real-time inference on smartphone hardware.
+
+Trained a gaze estimation model using the Columbia Gaze Database \cite{columbia_gaze}, which contains images with ground truth gaze direction labels. The database provides a diverse set of gaze angles recorded under controlled conditions, making it suitable for initial model validation.
+
+Achieved approximately 2 degrees of angular error on validation data (see \Cref{fig:mobilenet_val_loss}), which represents a solid proof of concept. This level of accuracy is comparable to commercial eye-tracking systems and suggests that custom model training is viable for our application.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{victor drafts/image.png}
+    \caption{Validation loss curve for MobileNet-based gaze estimation model. The model converges to low validation loss after approximately 10 epochs, demonstrating effective learning from the Columbia Gaze dataset.}
+    \label{fig:mobilenet_val_loss}
+\end{figure}
+
+\paragraph{What's Next}
+\begin{itemize}
+    \item Investigate whether similar approach can work with footage captured through VR lenses
+    \item Consider data augmentation strategies to handle distortion if filming through lenses
+    \item Assess computational requirements for real-time inference on target iPhone models
+\end{itemize}
+
+\subsubsection*{Saturday 18 October 2024}
+
+\paragraph{Aim}
+Determine current evidence-based biomarkers for mTBI pupillometry.
+
+\paragraph{What Happened}
+Started looking through published research on oculomotor biomarkers for concussion. Identified smooth tracking dysfunction, convergence deficiency, microsaccadic fixational eye movements, pupillary light reflex dysfunction, and vestibulo-ocular reflex dysfunction as potential biomarkers with evidence supporting their use.
+
+Began collecting relevant papers and reviewing what diagnostic performance had been achieved in existing studies.
+
+Further investigated lens dynamics via Google Cardboard headset.
+
+\paragraph{What's Next}
+\begin{itemize}
+    \item Gather more evidence-based information on the potential biomarkers. Collate useful studies in our Google Drive with a short description each (Thursday)
+    \item Test filming backwards through lenses and additional Google Cardboard headset investigation (Tuesday)
+\end{itemize}
+
+\subsection{Week 2: Hardware Testing and Biomarker Selection}
+
+\subsubsection*{Tuesday 21 October 2024}
+
+\paragraph{Aim}
+Actually investigate the Google Cardboard headset: test filming backwards through lenses, and assess possible camera locations, screen size, headset ergonomics, and overall practicality for our purposes.
+
+\paragraph{What Happened}
+Tested filming backwards through lenses. Compared the quality of the footage to online eye-tracking datasets and were pleasantly surprised - the pupil was often clearly visible.
+
+However, the image was very sensitive to movement of the headset relative to the eyes, so questions arose about the feasibility of training a reliable model through lenses.
+
+Assessed various possible camera locations:
+\begin{itemize}
+    \item Small eye-side cameras are inconspicuous but would require a more complex setup and would be significantly more expensive
+    \item Built-in iPhone front camera is simple but has a low resolution and is not very sensitive to light
+    \item Using the iPhone back camera is potentially viable but would require us to add a separate screen to the headset, and for the phone to be inserted into the headset backwards - this is something to consider in the future
+\end{itemize}
+
+Briefly considered headset ergonomics:
+\begin{itemize}
+    \item Priority: ensure the headset does not move on the user's head and can sit in a consistent position on a wide range of head sizes and shapes
+    \item Noted that these ergonomic considerations are not critical at this time, given other time-sensitive priorities (like getting the BOM together next week)
+\end{itemize}
+
+\paragraph{What's Next}
+\begin{itemize}
+    \item Begin to investigate the feasibility of using the iPhone front camera
+    \item Gather more evidence-based information on the potential biomarkers. Collate useful studies in our Google Drive with a short description each
+\end{itemize}
+
+\subsubsection*{Thursday 23 October 2024}
+
+\paragraph{Aim}
+Collate evidence-based information on the potential biomarkers, noting the tools used in each study and the feasibility of integrating them into our project. Investigate how we could successfully acquire sufficient data to train our own bespoke model.
+
+\paragraph{What Happened}
+Reviewed the literature collected over the past few days and narrowed down all of the evidence-based potential biomarkers to four that have been shown to be reliable screening methods: smooth tracking dysfunction, convergence deficiency, microsaccadic fixational eye movements, and pupillary light reflex dysfunction.
+
+Collated useful studies in the shared drive, noting the methodology and tools used in each. Started assessing which biomarkers would be feasible to implement with smartphone hardware.
+
+We each selected one of the four biomarkers to investigate in more detail on Saturday. Took on smooth tracking as the primary focus.
+
+\paragraph{What's Next}
+\begin{itemize}
+    \item Begin to investigate the feasibility of using the iPhone front camera
+    \item Each person will do a deep dive on their assigned biomarker to assess its viability and identify what components are needed for it, so we can start drafting the BOM
+\end{itemize}
+
+\subsubsection*{Saturday 25 October 2024}
+
+\paragraph{Aim}
+Biomarker deep dive and BOM drafting.
+
+\paragraph{What Happened}
+Did a deep dive on smooth tracking dysfunction, reviewing the neurological pathways involved, looking at diagnostic performance in published studies, and figuring out what framerate and resolution requirements we'd need to implement it effectively. Also contributed to researching the other biomarkers to understand the overall hardware requirements.
+
+Key findings across the team:
+\begin{itemize}
+    \item Microsaccadic fixational eye movements was found to require a framerate of at least 120~FPS, but preferably 240~FPS (or even higher), which would rule out using the iPhone front camera
+    \item For pupillary light reflex dysfunction, we determined that we may need a light source brighter than the iPhone screen, bringing up the possibility of using the iPhone back camera and torch, whilst a separate screen would display the video feed
+    \item We confirmed that convergence deficiency testing requires lenses, so removing the lenses would also eliminate the ability to test for convergence
+    \item Smooth tracking dysfunction was found to be possible at even 60~FPS, although increasing framerate as well as resolution would, of course, be beneficial
+\end{itemize}
+
+Determined that using the back camera of the iPhone combined with a separate screen to display the video feed would be the best solution for balancing the four biomarkers' requirements.
+
+\paragraph{What's Next}
+\begin{itemize}
+    \item Begin writing our first report draft, focusing on clear messaging and structure
+    \item Finalise BOM
+\end{itemize}
+
+\subsection{Week 3: BOM Finalisation and Report Preparation}
+
+\subsubsection*{Tuesday 28 October 2024}
+
+\paragraph{Aim}
+Finalise BOM.
+
+\paragraph{What Happened}
+Discussed screen size requirements. For optimal display and to ensure each eye has an adequate view field, we determined that a minimum screen size of 5 inches is necessary. This allows for a separate, sufficiently large visible area in front of each eye, which is essential for our intended headset setup.
+
+Note: considered two individual screens, one for each eye, but this required unfeasible cabling and was significantly more expensive. Furthermore, it was not even that beneficial because the angle from the middle of the single screen, which is where the camera would be if we used a double screen, to the lenses is too great relative to the eye-lens line.
+
+Almost finalised BOM, but upon further Google Cardboard testing, we think that filming backwards through the lenses is likely to interfere too much with the virtual image they create, and so we are considering omitting lenses (and thus also convergence testing).
+
+Began writing up the report, focusing on structuring the background section logically and ensuring clear explanations of the biomarker research and technical justifications for our design decisions.
+
+\paragraph{What's Next}
+\begin{itemize}
+    \item Actually finalise BOM
+    \item Finalise report draft
+\end{itemize}
+
+\subsubsection*{Thursday 30 October 2024}
+
+\paragraph{Aim}
+Finalise BOM. Finish report draft for 3 November submission.
+
+\paragraph{What Happened}
+Decided to not include lenses in the BOM. Our product will primarily focus on smooth tracking dysfunction and pupillary light reflex dysfunction, and we will position the screen far enough from the eyes that they are able to focus.
+
+Researched screen options for BOM - considered integrated controllers, cabling, screen size/resolution versus cost, power requirements, etc.
+
+Continued writing up the report, working on clean and logical presentation of the clinical need, limitations of existing approaches, and our technical solution. Ensured that arguments flowed coherently and were well-supported by the evidence collected.
+
+\paragraph{What's Next}
+Prepare presentation for 3 November.
+
+\subsubsection*{Saturday 1 November 2024}
+
+\paragraph{Aim}
+Prepare presentation for Monday.
+
+\paragraph{What Happened}
+Prepared presentation slides with key statistics and figures supporting our project rationale. Reviewed the methodology of each primary source study to ensure we accurately understand the evidence base for our statistics.
+
+Finalised the report draft, ensuring clean and logical presentation throughout. Polished the introduction, background, and commercialisation sections to ensure arguments flowed coherently and were well-supported by the evidence collected.
+
+\paragraph{What's Next}
+Present presentation on 3 November.
